@@ -235,5 +235,16 @@ public class Main {
         String answer = new String(encrypted);
         return answer;
     }
-    
+
+    public static void main(String[] args) {
+
+        Scanner cursor = new Scanner(System.in);
+        String plaintext = cursor.nextLine();
+        String keyword = cursor.nextLine();
+        
+        String encrypted = digraphAssembler(playfairCypherEncryption(plaintext,keyword),0);
+        String decrypted = digraphAssembler(playfairCypherDecryption(encrypted,keyword),1);
+        
+        System.out.println();
+    }
 }
