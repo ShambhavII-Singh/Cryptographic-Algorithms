@@ -37,7 +37,7 @@ public class Main {
 
     }
 
-        public static String caesarCypherDecryption(String message, int key) {
+    public static String caesarCypherDecryption(String message, int key) {
 
         int len = message.length();
         char[] answer = message.toCharArray();
@@ -70,7 +70,7 @@ public class Main {
 
     }
 
-        public static void main(String[] args) {
+    public static void main(String[] args) {
 
         Scanner cursor = new Scanner(System.in);
         String message = cursor.nextLine();
