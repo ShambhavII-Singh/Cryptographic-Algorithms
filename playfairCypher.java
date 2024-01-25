@@ -144,5 +144,73 @@ public class Main {
         return encryptedDigraphs;
         
     }
+
+        public static ArrayList<ArrayList<Character>> playfairCypherDecryption(String plaintext, String keyword) {
+        
+        ArrayList<ArrayList<Character>> matrix = playfairMatrixGenerator(keyword);
+        ArrayList<ArrayList<Character>> digraphs = playfairDigraphGenerator(plaintext);
+        ArrayList<ArrayList<Character>> decryptedDigraphs = new ArrayList<ArrayList<Character>>();
+        
+        for (ArrayList<Character> digraph : digraphs) {
+            int firstRow = 0;
+            int secondRow = 0;
+            int firstCol = 0;
+            int secondCol = 0;
+            ArrayList<Character> temp = new ArrayList<Character>();
+            
+            for (int i = 0; i < 5; i++) {
+                if (matrix.get(i).contains(digraph.get(0))) {
+                    firstRow = i;
+                    firstCol = matrix.get(i).indexOf(digraph.get(0));
+                }
+                if (matrix.get(i).contains(digraph.get(1))) {
+                    secondRow = i;
+                    secondCol = matrix.get(i).indexOf(digraph.get(1));
+                }
+            }
+            
+            if (firstRow == secondRow) {
+                if (firstCol == 0) {
+                    firstCol = 5;
+                }
+                if (secondCol == 0) {
+                    secondCol = 5;
+                }
+                
+                temp.add(matrix.get(firstRow).get((firstCol-1)%5));
+                temp.add(matrix.get(firstRow).get((secondCol-1)%5));
+            }
+            else if (firstCol == secondCol) {
+                if (firstCol == 0) {
+                    firstCol = 5;
+                }
+                if (secondCol == 0) {
+                    secondCol = 5;
+                }
+                
+                temp.add(matrix.get(firstRow).get((firstCol-1)%5));
+                temp.add(matrix.get(secondRow).get((firstCol-1)%5));
+            }
+            else {
+                if (firstCol > secondCol) {
+                    int dimention = firstCol - secondCol;
+                    temp.add(matrix.get(firstRow).get((firstCol-dimention)%5));
+                    temp.add(matrix.get(secondRow).get((secondCol+dimention)%5));
+                }
+                else {
+                    int dimention = secondCol - firstCol;
+                    temp.add(matrix.get(firstRow).get((firstCol+dimention)%5));
+                    temp.add(matrix.get(secondRow).get((secondCol-dimention)%5));
+                }
+            }
+            decryptedDigraphs.add(temp);
+        }
+        
+        System.out.println("Decrypted Digraphs: ");
+        System.out.println(decryptedDigraphs);
+        System.out.println();
+        return decryptedDigraphs;
+        
+    }
     
 }
