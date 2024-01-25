@@ -37,4 +37,58 @@ public class Main {
         return matrix;
         
     }
+
+    public static ArrayList<ArrayList<Character>> playfairDigraphGenerator(String plaintext) {
+        
+        plaintext = plaintext.replaceAll("\\s","");
+        int remaining = plaintext.length();
+        ArrayList<ArrayList<Character>> diagraphs = new ArrayList<ArrayList<Character>>();
+        CharacterIterator itr = new StringCharacterIterator(plaintext); 
+        
+        while (itr.current() != CharacterIterator.DONE) {
+            ArrayList<Character> temp = new ArrayList<Character>();
+            char first = itr.current();
+            char second = itr.next();
+            
+            if (first == 'J') {
+                first = 'I';
+            } 
+            if (second == 'J') {
+                second = 'I';
+            }
+            
+            if ((int) second == 65535) {
+                temp.add(first);
+                temp.add('Z');
+                diagraphs.add(temp);
+            }
+            else {
+                if (first != second) {
+                    temp.add(first);
+                    temp.add(second);
+                    diagraphs.add(temp);
+                }
+                else if (first == second) {
+                    temp.add(first);
+                    temp.add('Z');
+                    diagraphs.add(temp);
+                    
+                    temp.clear();
+                    
+                    temp.add(second);
+                    temp.add('Z');
+                    diagraphs.add(temp);
+                }
+            }
+            
+            
+            itr.next();
+        }
+        
+        System.out.println("Digraphs created: ");
+        System.out.println(diagraphs);
+        System.out.println();
+        return diagraphs;
+    }
+    
 }
