@@ -36,5 +36,38 @@ public class Main {
         return encrypted;
 
     }
+
+        public static String caesarCypherDecryption(String message, int key) {
+
+        int len = message.length();
+        char[] answer = message.toCharArray();
+        int pointer = 0;
+        CharacterIterator itr = new StringCharacterIterator(message); 
+
+        while (itr.current() != CharacterIterator.DONE) { 
+            if (itr.current()==' ') {
+                answer[pointer] = ' ';
+            }
+            else {
+                int isolated = (int) itr.current() - key;
+                if (isolated>=65) {
+                    answer[pointer] = (char) isolated;
+                }
+                else {
+                    isolated = 90 - (64-isolated);
+                    answer[pointer] = (char) isolated;
+                }
+            }
+            pointer++;
+            itr.next();
+        } 
+
+        System.out.print("DECRYPTED MESSAGE IS : ");
+        System.out.println(answer);
+
+        String decrypted = new String(answer);
+        return decrypted;
+
+    }
   
 }
