@@ -69,5 +69,17 @@ public class Main {
         return decrypted;
 
     }
+
+        public static void main(String[] args) {
+
+        Scanner cursor = new Scanner(System.in);
+        String message = cursor.nextLine();
+        int key = cursor.nextInt();
+
+        String encrypted = caesarCypherEncryption(message,key);
+        System.out.println("---------------------------");
+        String decrypted = caesarCypherDecryption(encrypted,key);
+
+    }
   
 }
