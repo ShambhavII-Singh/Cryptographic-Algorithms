@@ -91,7 +91,7 @@ public class Main {
         return diagraphs;
     }
 
-        public static ArrayList<ArrayList<Character>> playfairCypherEncryption(String plaintext, String keyword) {
+    public static ArrayList<ArrayList<Character>> playfairCypherEncryption(String plaintext, String keyword) {
         
         ArrayList<ArrayList<Character>> matrix = playfairMatrixGenerator(keyword);
         ArrayList<ArrayList<Character>> digraphs = playfairDigraphGenerator(plaintext);
@@ -145,7 +145,7 @@ public class Main {
         
     }
 
-        public static ArrayList<ArrayList<Character>> playfairCypherDecryption(String plaintext, String keyword) {
+    public static ArrayList<ArrayList<Character>> playfairCypherDecryption(String plaintext, String keyword) {
         
         ArrayList<ArrayList<Character>> matrix = playfairMatrixGenerator(keyword);
         ArrayList<ArrayList<Character>> digraphs = playfairDigraphGenerator(plaintext);
@@ -213,7 +213,7 @@ public class Main {
         
     }
 
-        public static String digraphAssembler(ArrayList<ArrayList<Character>> encryptedDigraphs, int mode) {
+    public static String digraphAssembler(ArrayList<ArrayList<Character>> encryptedDigraphs, int mode) {
         
         char[] encrypted = new char[encryptedDigraphs.size()*2];
         int pointer = 0;
@@ -247,4 +247,5 @@ public class Main {
         
         System.out.println();
     }
+    
 }
