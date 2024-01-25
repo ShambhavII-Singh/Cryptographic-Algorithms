@@ -212,5 +212,28 @@ public class Main {
         return decryptedDigraphs;
         
     }
+
+        public static String digraphAssembler(ArrayList<ArrayList<Character>> encryptedDigraphs, int mode) {
+        
+        char[] encrypted = new char[encryptedDigraphs.size()*2];
+        int pointer = 0;
+        
+        for (ArrayList<Character> digraph : encryptedDigraphs) {
+            encrypted[pointer] = digraph.get(0);
+            pointer++;
+            encrypted[pointer] = digraph.get(1);
+            pointer++;
+        }
+        
+        if (mode == 0) {
+            System.out.println("Encrypted Message: ");
+        }
+        if (mode == 1) {
+            System.out.println("Decrypted Message: ");
+        }
+        System.out.println(encrypted);
+        String answer = new String(encrypted);
+        return answer;
+    }
     
 }
